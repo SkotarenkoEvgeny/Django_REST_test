@@ -1,0 +1,17 @@
+.main_class {
+    margin: 20px;
+}
+.item {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+nav {
+    margin: 20px;
+    background-color: green;
+}
+.button_margin {
+  margin-top: 20px;
+}
+.card {
+    width: 36rem;
+}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Перелік курсів{% endblock %}
+{% block content %}
+<h1>Перелік курсів</h1>
+<div class="item">
+<form method="GET" class="d-flex">
+    <input class="form-control me-2" type="search"
+           placeholder="Пошук за назвою"
+           aria-label="Search" name="search_name">
+    <select class="form-control me-2" name="search_start_date">
+        <option disabled selected value>Оберіть дату початку</option>
+        {% for item in start_date %}
+        <option value="{{item}}">
+            {{item}}
+        </option>
+        {% endfor %}
+    </select>
+    <select class="form-control me-2" name="search_end_date">
+        <option disabled selected value>Оберіть дату закінчення</option>
+        {% for item in end_date %}
+        <option value="{{item}}">
+            {{item}}
+        </option>
+        {% endfor %}
+    </select>
+    <button class="btn btn-outline-success" type="submit">Search
+    </button>
+</form>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Назва курсу</th>
+        <th scope="col">Дата початку</th>
+        <th scope="col">Дата закінчення</th>
+        <th scope="col">Кількість лекцій</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for course in courses %}
+    <tr>
+        <th scope="row">{{course.id}}</th>
+        <td>
+            <a href="{% url 'course_detail' pk=course.pk %}">{{course.name}}</a>
+        </td>
+        <td>{{course.start_date}}</td>
+        <td>{{course.end_date}}</td>
+        <td>{{course.lectures_amount}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Видалити курс{% endblock %}
+{% block content %}
+<h1>Видалити курс "{{ object }}"</h1>
+<div class="module">
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <p>Ви бажаєте видалити "{{ object }}"?</p>
+        <div class="button_margin">
+            <button type="submit" class="btn btn-primary">Видалити</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Кус {{course.name}}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <td>Назва курсу</td>
+                <td>{{course.name}}</td>
+            </tr>
+            <tr>
+                <td>Дата початку</td>
+                <td>{{course.start_date}}</td>
+            </tr>
+            <tr>
+                <td>Дата закінчення</td>
+                <td>{{course.end_date}}</td>
+            </tr>
+            <tr>
+                <td>Кількість лекцій</td>
+                <td>{{course.lectures_amount}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+        <a href="{% url 'course_update' pk=course.pk %}"
+           class="btn btn-primary">Редагувати</a>
+        <a href="{% url 'course_delete' pk=course.pk %}"
+           class="btn btn-primary">Видалити</a>
+    </div>
+</div>
+
+{% endblock %}
